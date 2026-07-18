@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PT. BERKAH SURETY - Bank Garansi & Surety Bond NON COLLATERAL</title>
+    <title>PT. Berkah Surety - Solusi Bank Garansi & Surety Bond NON COLLATERAL</title>
     <style>
         :root {
             --primary-color: #0d2c54; 
@@ -19,20 +19,70 @@
             max-width: 750px; 
             margin: 0 auto; 
             padding: 15px;
+            scroll-behavior: smooth;
         }
         header { 
             text-align: center; 
-            padding: 25px 15px; 
+            padding: 30px 20px; 
             background: linear-gradient(135deg, var(--primary-color), #1a4a80); 
             color: white; 
             border-radius: 8px;
             margin-bottom: 25px;
         }
-        header h1 { margin: 0 0 5px 0; font-size: 2em; }
-        .tagline { color: var(--secondary-color); font-weight: bold; font-size: 1.05em; }
+        header h1 { margin: 0 0 5px 0; font-size: 2.2em; }
+        .tagline { color: var(--secondary-color); font-weight: bold; font-size: 1.1em; }
         header p { margin: 5px 0 0 0; font-size: 0.95em; opacity: 0.9; }
         
-        h2 { color: var(--primary-color); border-bottom: 2px solid var(--secondary-color); padding-bottom: 6px; margin-top: 30px; font-size: 1.4em; }
+        .company-profile {
+            background: var(--bg-light);
+            border-left: 4px solid var(--primary-color);
+            padding: 20px;
+            border-radius: 6px;
+            margin: 25px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .company-profile p { margin: 0; font-size: 0.95em; color: #444; text-align: justify; }
+
+        /* SKRIP PREMIUM: INDIKATOR STATISTIK (ANIMATED COUNTER) */
+        .stat-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+            text-align: center;
+        }
+        .stat-box {
+            background: #ffffff;
+            border: 1px solid #e1e8ed;
+            padding: 15px;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+        .stat-number {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 2px;
+        }
+        .stat-label {
+            font-size: 0.8em;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* SKRIP PREMIUM: SCROLL REVEAL STYLE CLASS EFFECT */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 { color: var(--primary-color); border-bottom: 2px solid var(--secondary-color); padding-bottom: 6px; margin-top: 35px; font-size: 1.4em; }
         h3 { color: var(--primary-color); margin-top: 20px; font-size: 1.15em; }
         
         .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 15px 0; }
@@ -66,6 +116,15 @@
         .btn-submit { width: 100%; background: var(--accent-color); color: white; border: none; padding: 10px; font-size: 0.9em; font-weight: bold; border-radius: 4px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
         .btn-submit:hover { background: #20ba5a; }
         
+        /* SKRIP PREMIUM: BACK TO TOP BUTTON */
+        #btnBackToTop {
+            display: none; position: fixed; bottom: 20px; right: 20px; z-index: 99;
+            border: none; outline: none; background-color: var(--primary-color); color: white;
+            cursor: pointer; padding: 10px 14px; border-radius: 4px; font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2); transition: background-color 0.2s;
+        }
+        #btnBackToTop:hover { background-color: var(--secondary-color); }
+
         footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #e1e8ed; font-size: 0.85em; color: #555; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
         .footer-info h4 { color: var(--primary-color); margin: 0 0 8px 0; font-size: 1em; border-left: 3px solid var(--secondary-color); padding-left: 8px; }
@@ -74,18 +133,36 @@
 </head>
 <body>
 
+    <button onclick="scrollToTop()" id="btnBackToTop" title="Kembali ke atas">▲</button>
+
     <header>
-        <h1>PT. BERKAH SURETY</h1>
-        <p class="tagline">JASA BANK GARANSI & SURETY BOND NON COLLATERAL</p>
+        <h1>PT. Berkah Surety</h1>
+        <p class="tagline">Solusi Bank Garansi & Surety Bond NON COLLATERAL</p>
         <p>Cepat • Aman • Profesional • Terpercaya</p>
     </header>
 
     <main>
-        <!-- BAGIAN BARU: PENJELASAN SINGKAT PERUSAHAAN -->
         <section class="company-profile">
-            <p><strong>PT. Berkah Surety</strong> menghadirkan solusi dan jasa profesional penerbitan Bank Garansi, Surety Bond, dan General Insurance untuk mendukung kebutuhan perusahaan dalam proses Tender, Proyek Konstruksi, Pembayaran Uang Muka, Pemeliharaan Pekerjaan, serta pemenuhan persyaratan administrasi perusahaan.</p>
+            <p><strong>PT. Berkah Surety</strong> menghadirkan solusi dan jasa penerbitan Bank Garansi, Surety Bond, dan General Insurance untuk mendukung kebutuhan perusahaan dalam proses Tender, Proyek Konstruksi, Pembayaran Uang Muka, Pemeliharaan Pekerjaan, serta pemenuhan persyaratan administrasi perusahaan.</p>
         </section>
-        <section>
+
+        <!-- IMPLEMENTASI PRESET INDIKATOR ANGKA STATISTIK BERGERAK -->
+        <section class="stat-container reveal">
+            <div class="stat-box">
+                <div class="stat-number" data-target="150">0</div>
+                <div class="stat-label">Mitra Proyek</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" data-target="100">0</div>
+                <div class="stat-label">% Tanpa Agunan</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" data-target="24">0</div>
+                <div class="stat-label">Jam Respon</div>
+            </div>
+        </section>
+
+        <section class="reveal">
             <h2>Mengapa Memilih Kami?</h2>
             <div class="features">
                 <div class="feature-item"><strong>✓ Non Collateral</strong>Tanpa Agunan</div>
@@ -95,7 +172,7 @@
             </div>
         </section>
 
-        <section>
+        <section class="reveal">
             <h2>Bank Garansi</h2>
             <p style="font-size: 0.9em;">Rate per tahun <span class="badge">100% Tanpa Agunan</span></p>
             <table>
@@ -111,10 +188,9 @@
             </table>
             <span class="note">* Belum termasuk admin & legalisasi notaris untuk SPKMGR.</span>
         </section>
-
-        <section>
+        <section class="reveal">
             <h2>Surety Bond</h2>
-            <p style="font-size: 0.9em;">Jangka waktu per 3 Bulan <span class="badge">100% Tanpa Agunan</span></p>
+            <p style="font-size: 0.9em;">Jangka waktu 3 Bulan <span class="badge">100% Tanpa Agunan</span></p>
             <table>
                 <thead>
                     <tr><th>Jenis</th><th>Rate</th><th>Dokumen Persyaratan</th></tr>
@@ -128,7 +204,8 @@
             </table>
             <span class="note">* Belum termasuk admin & legalisasi notaris untuk SPKMGR.</span>
         </section>
-        <section>
+
+        <section class="reveal">
             <h2>General Insurance</h2>
             <p style="font-size: 0.9em;">Kami membantu penerbitan asuransi umum dengan rate negotiable:</p>
             
@@ -150,7 +227,7 @@
             </ul>
         </section>
 
-        <section>
+        <section class="reveal">
             <h2>Mitra Strategis Terpercaya</h2>
             <div class="partner-box">
                 <strong>Referensi Bank Penerbit:</strong>
@@ -163,15 +240,15 @@
             </div>
         </section>
 
-        <!-- FORMULIR WHATSAPP KECIL & MINIMALIS -->
-        <section class="cta-section">
+        <!-- FORMULIR WHATSAPP INTERAKTIF -->
+        <section class="cta-section reveal">
             <h3>Konsultasi Jaminan Proyek</h3>
             <p>Silakan isi nama dan pilih layanan untuk terhubung langsung via WhatsApp.</p>
             
             <div class="form-container">
                 <form id="whatsappForm">
                     <div class="form-group">
-                        <label for="nama">Perusahaan / Nama *</label>
+                        <label for="nama">Nama / Perusahaan *</label>
                         <input type="text" id="nama" placeholder="Contoh: PT Amanah / Ibu Lisa" required>
                     </div>
                     
@@ -194,12 +271,11 @@
         </section>
     </main>
 
-    <!-- BAGIAN FOOTER BARU: INTEGRASI GOOGLE MAPS -->
     <footer>
         <div class="footer-grid">
             <div class="footer-info">
                 <h4>Kantor Pusat</h4>
-                <p><strong>PT. BERKAH SURETY</strong></p>
+                <p><strong>PT. Berkah Surety</strong></p>
                 <p><strong>Mobile : +6282183298013</strong></p>
                 <p>Jl. Jenderal Sudirman No. XX, Lantai X, Gedung XXXXXX</p>
                 <p>Kec. Kebayoran Baru, Kota Jakarta Selatan,</p>
@@ -207,30 +283,24 @@
                 
                 <h4 style="margin-top: 15px;">Jam Operasional</h4>
                 <p>Senin – Jumat: 08.30 WIB – 17.00 WIB</p>
-                <p>Sabtu: 09.00 WIB – 15.00 WIB</p>
+                <p>Sabtu: 09.00 WIB – 13.00 WIB</p>
                 <p style="color: #ca3434;">Minggu & Hari Libur Nasional: Tutup</p>
             </div>
             
-            <!-- SEMATAN IFRAME GOOGLE MAPS RESPONSIF -->
             <div class="footer-info">
                 <h4>Lokasi Kami</h4>
                 <div style="width: 100%; border-radius: 6px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #ddd; height: 200px;">
-                    <!-- Catatan: Untuk mengganti peta, tukar nilai atribut src di bawah ini dengan tautan embed dari Google Maps kantor Anda -->
                     <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3163226.087718356!2d128.72090212199518!3d-67.2244983603377!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sid!4v1784364947147!5m2!1sen!2sid" 
-                        width="100%" 
-                        height="100%" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade">
+                        src="https://google.com" 
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
                 </div>
             </div>
         </div>
-        <p style="text-align: center; margin-top: 25px; font-size: 0.9em; color: #999;">&copy; 2026 PT. BERKAH SURETY. All Rights Reserved.</p>
+        <p style="text-align: center; margin-top: 25px; font-size: 0.9em; color: #999;">&copy; 2026 PT. Berkah Surety. All Rights Reserved.</p>
     </footer>
-<!-- GABUNGAN SKRIP JAVASCRIPT PREMIUM -->
+
+    <!-- GABUNGAN SKRIP JAVASCRIPT PREMIUM -->
     <script>
         // 1. SKRIP: TOMBOL BACK TO TOP LOGIC
         window.onscroll = function() { scrollFunction(); checkReveal(); };
@@ -275,7 +345,7 @@
                 const updateCount = () => {
                     const target = +counter.getAttribute('data-target');
                     const count = +counter.innerText;
-                    const speed = 70; 
+                    const speed = 100; 
                     const inc = target / speed;
 
                     if (count < target) {
