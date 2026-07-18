@@ -295,7 +295,7 @@
         <p style="text-align: center; margin-top: 25px; font-size: 0.9em; color: #999;">&copy; 2026 PT. Berkah Surety. All Rights Reserved.</p>
     </footer>
 
-    <!-- GABUNGAN SKRIP JAVASCRIPT PREMIUM -->
+<!-- GABUNGAN SKRIP JAVASCRIPT PREMIUM (VERSI PERBAIKAN) -->
     <script>
         // 1. SKRIP: TOMBOL BACK TO TOP LOGIC
         window.onscroll = function() { scrollFunction(); checkReveal(); };
@@ -330,7 +330,7 @@
             }
         }
 
-        // 3. SKRIP: ANIMATED COUNTER CONTROLLER
+        // 3. SKRIP: ANIMATED COUNTER CONTROLLER (SUDAH DIPERBAIKI)
         let counterStarted = false;
         function startCounters() {
             if (counterStarted) return;
@@ -340,14 +340,25 @@
                 const updateCount = () => {
                     const target = +counter.getAttribute('data-target');
                     const count = +counter.innerText;
-                    const speed = 50; 
+                    const speed = 30; 
                     const inc = target / speed;
 
                     if (count < target) {
                         counter.innerText = Math.ceil(count + inc);
                         setTimeout(updateCount, 20);
                     } else {
-                        counter.innerText = target + (target === 110 350 ? "+" : target === 24 ? " Jam" : target === 100 ? "%" : "+" );
+                        // KODE PERBAIKAN: Deteksi otomatis berdasarkan teks label di bawah angka
+                        const labelText = counter.nextElementSibling.innerText.toLowerCase();
+                        
+                        if (labelText.includes('persen') || labelText.includes('kepuasan') || labelText.includes('agunan')) {
+                            counter.innerText = target + "%";
+                        } else if (labelText.includes('jam') || labelText.includes('respon')) {
+                            counter.innerText = target + " Jam";
+                        } else if (labelText.includes('menit')) {
+                            counter.innerText = target + " Menit";
+                        } else {
+                            counter.innerText = target + "+";
+                        }
                     }
                 };
                 updateCount();
